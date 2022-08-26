@@ -36,12 +36,8 @@ public class Exitui: Form
  private Panel headerpanel = new Panel();
  private Graphicpanel displaypanel = new Graphicpanel();
  private Panel controlpanel = new Panel();
- private Size maxexituisize = new Size(1024, 800);
- private Size minexituisize = new Size(1024, 800);
-
- // Note to self: investigate these later -------------------------------------
- private enum Status {Initial_display,Successful_calculation,Error};
- private static Status outcome = Status.Initial_display;
+ private Size maxexituisize = new Size(1024, 1280);
+ private Size minexituisize = new Size(1024, 1280);
 
 // Initialize Variables
  public Exitui() {
@@ -62,71 +58,64 @@ public class Exitui: Form
      exitmessage.Size = new Size(300, 200);
      hidebutton.Size = new Size(120, 60);
      quitbutton.Size = new Size(120, 60);
-
-     // Note to self: adjust these later -------------------------------
      headerpanel.Size = new Size(1024, 200);
-     displaypanel.Size = new Size(1024, 400);
+     displaypanel.Size = new Size(1024, 855);
      controlpanel.Size = new Size(1024, 200);
 
-     //Set colors for panel and buttons
+     // Set colors for panel and buttons
      headerpanel.BackColor = Color.Cornsilk;
      displaypanel.BackColor = Color.Gold;
      controlpanel.BackColor = Color.DeepSkyBlue;
      hidebutton.BackColor = Color.LimeGreen;
      quitbutton.BackColor = Color.LimeGreen;
 
-     //Set text fonts and font size
+     // Set text fonts and font size
      author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
-     exitmessage.Font = new Font("Highway Gothic", 80, FontStyle.Regular);
+     exitmessage.Font = new Font("Highway Gothic", 90, FontStyle.Regular);
      hidebutton.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
      quitbutton.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
 
-     //Set text alignment
+     // Set text alignment
      author.TextAlign = ContentAlignment.MiddleCenter;
      exitmessage.TextAlign = ContentAlignment.MiddleCenter;
 
-     //Set locations
-     headerpanel.Location = new Point(0,0);
-     author.Location = new Point(330,100);
-     exitmessage.Location = new Point(100,60);
-     hidebutton.Location = new Point(450,50);
-     quitbutton.Location = new Point(720,50);
-     headerpanel.Location = new Point(0,0);
-     displaypanel.Location = new Point(0,200);
-     controlpanel.Location = new Point(0,600);
+     // Set locations (width, length)
+     headerpanel.Location = new Point(0, 0);
+     author.Location = new Point(330, 80);
+     exitmessage.Location = new Point(350, 60);
+     hidebutton.Location = new Point(220, 50);
+     quitbutton.Location = new Point(720, 50);
+     headerpanel.Location = new Point(0, 0);
+     displaypanel.Location = new Point(0, 200);
+     controlpanel.Location = new Point(0, 1054);
 
-
-     //Add controls to the form
+     // Control elements to display
      Controls.Add(headerpanel);
      headerpanel.Controls.Add(author);
      Controls.Add(displaypanel);
-      displaypanel.Controls.Add(exitmessage);
+     displaypanel.Controls.Add(exitmessage);
      Controls.Add(controlpanel);
      controlpanel.Controls.Add(hidebutton);
      controlpanel.Controls.Add(quitbutton);
 
-     //Open this user interface window in the center of the display.
+     // Control buttons when clicked
+     quitbutton.Click += new EventHandler(terminate);
+
+     // Center the screen when program is opened
      CenterToScreen();
 
-    }//End of constructor Fibuserinterface
+   } // End of ui constructor
 
-    public class Graphicpanel: Panel
- {private Brush paint_brush = new SolidBrush(System.Drawing.Color.Green);
-  public Graphicpanel()
-        {Console.WriteLine("A graphic enabled panel was created");}  //Constructor writes to terminal
-  protected override void OnPaint(PaintEventArgs ee)
-  {  Graphics graph = ee.Graphics;
-     switch(outcome)
-     {case Status.Initial_display: Console.WriteLine("Initial view of the UI is displayed");
-           break;
-      case Status.Successful_calculation: graph.FillEllipse(paint_brush,100,280,100,100);
-           break;
-      case Status.Error: graph.FillEllipse(Brushes.Red,800,280,100,100);
-           break;
-  }//End of switch
-  //The next statement looks like recursion, but it really is not recursion.
-  //In fact, it calls the method with the same name located in the super class.
-  base.OnPaint(ee);
-  }//End of OnPaint
-} ///End of class Graphicpanel
-  }
+   // Function called by quit button to terminate.
+    protected void terminate(Object sender, EventArgs i)
+    {System.Console.WriteLine("This program will close.");
+      Close();
+    }
+
+ // Graphic Class to output sign
+ public class Graphicpanel: Panel
+      {public Graphicpanel()
+      {Console.WriteLine("A graphic enabled panel was created");}
+    } //End of graphics constructor
+
+  } // End of main class
