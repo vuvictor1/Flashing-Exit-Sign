@@ -30,79 +30,79 @@ using System.Windows.Forms;
 // Call on functions from the form library
 public class Exitui: Form
 {private Label author = new Label();
- private Label exitmessage = new Label();
- private Button hidebutton = new Button();
- private Button quitbutton = new Button();
- private Panel headerpanel = new Panel();
- private Graphicpanel displaypanel = new Graphicpanel();
- private Panel controlpanel = new Panel();
- private Size maxexituisize = new Size(1024, 1280);
- private Size minexituisize = new Size(1024, 1280);
+ private Label exit_message = new Label();
+ private Button hide_button = new Button();
+ private Button quit_button = new Button();
+ private Panel header_panel = new Panel();
+ private Graphicpanel display_panel = new Graphicpanel();
+ private Panel control_panel = new Panel();
+ private Size max_exit_ui_size = new Size(1024, 1280);
+ private Size min_exit_ui_size = new Size(1024, 1280);
 
  private static bool arrow_visible = true; // delcare bool to check if arrow is visible
 
 // Initialize Variables
  public Exitui() {
      // Assign a size to the ui
-     MaximumSize = maxexituisize;
-     MinimumSize = minexituisize;
+     MaximumSize = max_exit_ui_size;
+     MinimumSize = min_exit_ui_size;
 
      // Initialize string variables
      Text = "Colored Exit Sign";
      author.Text = "Exit Sign by Victor V. Vu";
-     exitmessage.Text = "Exit";
-     hidebutton.Text = "Hide";
-     quitbutton.Text = "Quit";
+     exit_message.Text = "Exit";
+     hide_button.Text = "Hide";
+     quit_button.Text = "Quit";
 
      // Set size values of buttons, textboxes,
      // & panels (width, length)
      author.Size = new Size(370, 40);
-     exitmessage.Size = new Size(300, 200);
-     hidebutton.Size = new Size(120, 60);
-     quitbutton.Size = new Size(120, 60);
-     headerpanel.Size = new Size(1024, 200);
-     displaypanel.Size = new Size(1024, 855);
-     controlpanel.Size = new Size(1024, 200);
+     exit_message.Size = new Size(300, 200);
+     hide_button.Size = new Size(120, 60);
+     quit_button.Size = new Size(120, 60);
+     header_panel.Size = new Size(1024, 200);
+     display_panel.Size = new Size(1024, 855);
+     control_panel.Size = new Size(1024, 200);
 
      // Set colors for panel and buttons
-     headerpanel.BackColor = Color.Cornsilk;
-     displaypanel.BackColor = Color.Gold;
-     controlpanel.BackColor = Color.DeepSkyBlue;
-     hidebutton.BackColor = Color.LimeGreen;
-     quitbutton.BackColor = Color.LimeGreen;
+     header_panel.BackColor = Color.Cornsilk;
+     display_panel.BackColor = Color.Gold;
+     control_panel.BackColor = Color.DeepSkyBlue;
+     hide_button.BackColor = Color.LimeGreen;
+     quit_button.BackColor = Color.LimeGreen;
 
      // Set text fonts and font size
      author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
-     exitmessage.Font = new Font("Highway Gothic", 90, FontStyle.Regular);
-     hidebutton.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
-     quitbutton.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
+     exit_message.Font = new Font("Highway Gothic", 90, FontStyle.Regular);
+     hide_button.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
+     quit_button.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
 
      // Set text alignment
      author.TextAlign = ContentAlignment.MiddleCenter;
-     exitmessage.TextAlign = ContentAlignment.MiddleCenter;
+     exit_message.TextAlign = ContentAlignment.MiddleCenter;
 
      // Set locations (width, length)
-     headerpanel.Location = new Point(0, 0);
+     header_panel.Location = new Point(0, 0);
      author.Location = new Point(330, 80);
-     exitmessage.Location = new Point(350, 60);
-     hidebutton.Location = new Point(220, 50);
-     quitbutton.Location = new Point(720, 50);
-     headerpanel.Location = new Point(0, 0);
-     displaypanel.Location = new Point(0, 200);
-     controlpanel.Location = new Point(0, 1054);
+     exit_message.Location = new Point(350, 60);
+     hide_button.Location = new Point(220, 50);
+     quit_button.Location = new Point(720, 50);
+     header_panel.Location = new Point(0, 0);
+     display_panel.Location = new Point(0, 200);
+     control_panel.Location = new Point(0, 1054);
 
      // Control elements to display
-     Controls.Add(headerpanel);
-     headerpanel.Controls.Add(author);
-     Controls.Add(displaypanel);
-     displaypanel.Controls.Add(exitmessage);
-     Controls.Add(controlpanel);
-     controlpanel.Controls.Add(hidebutton);
-     controlpanel.Controls.Add(quitbutton);
+     Controls.Add(header_panel);
+     header_panel.Controls.Add(author);
+     Controls.Add(display_panel);
+     display_panel.Controls.Add(exit_message);
+     Controls.Add(control_panel);
+     control_panel.Controls.Add(hide_button);
+     control_panel.Controls.Add(quit_button);
 
      // Control buttons when clicked
-     hidebutton.Click += new EventHandler(arrow);
-     quitbutton.Click += new EventHandler(terminate);
+     hide_button.Click += new EventHandler(arrow);
+     quit_button.Click += new EventHandler(terminate);
 
      // Center the screen when program is opened
      CenterToScreen();
@@ -114,13 +114,13 @@ public class Exitui: Form
     protected void arrow(Object sender, EventArgs h)
     {if(arrow_visible)
         {arrow_visible = false;
-         hidebutton.Text = "Show";
+         hide_button.Text = "Show";
         }
      else
         {arrow_visible = true;
-         hidebutton.Text = "Hide";
+         hide_button.Text = "Hide";
         }
-     displaypanel.Invalidate();
+     display_panel.Invalidate();
    }// End of method arrow
 
     // Function called by quit button to terminate.
@@ -139,7 +139,18 @@ public class Exitui: Form
    protected override void OnPaint(PaintEventArgs ee)
         {Graphics graph = ee.Graphics;
           if(arrow_visible) {
-            graph.FillEllipse(Brushes.Violet, 100, 500, 150, 150);
+            graph.FillEllipse(Brushes.Crimson, 100, 500, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 250, 500, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 400, 500, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 550, 500, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 700, 500, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 850, 500, 90, 90);
+
+            graph.FillEllipse(Brushes.Crimson, 775, 350, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 625, 275, 90, 90);
+
+            graph.FillEllipse(Brushes.Crimson, 775, 650, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 625, 725, 90, 90);
           }
           base.OnPaint(ee);
         } // OnPaint constructor
