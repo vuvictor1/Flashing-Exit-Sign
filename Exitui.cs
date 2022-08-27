@@ -51,6 +51,7 @@ public class Exitui: Form
      Text = "Colored Exit Sign";
      author.Text = "Exit Sign by Victor V. Vu";
      exit_message.Text = "Exit";
+     exit_message.ForeColor = System.Drawing.Color.Purple;
      hide_button.Text = "Hide";
      quit_button.Text = "Quit";
 
