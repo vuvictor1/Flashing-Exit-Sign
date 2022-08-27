@@ -7,3 +7,6 @@ Run Bash File: sh r.sh
 
 ***Requirements:***
 - mono-complete
+
+![Capture](https://user-images.githubusercontent.com/78053016/187042453-cad1bc5e-917f-498e-bdbc-032c48277a02.PNG)
+
