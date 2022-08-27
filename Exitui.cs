@@ -39,6 +39,8 @@ public class Exitui: Form
  private Size maxexituisize = new Size(1024, 1280);
  private Size minexituisize = new Size(1024, 1280);
 
+ private static bool arrow_visible = true; // delcare bool to check if arrow is visible
+
 // Initialize Variables
  public Exitui() {
      // Assign a size to the ui
@@ -99,6 +101,7 @@ public class Exitui: Form
      controlpanel.Controls.Add(quitbutton);
 
      // Control buttons when clicked
+     hidebutton.Click += new EventHandler(arrow);
      quitbutton.Click += new EventHandler(terminate);
 
      // Center the screen when program is opened
@@ -106,16 +109,41 @@ public class Exitui: Form
 
    } // End of ui constructor
 
-   // Function called by quit button to terminate.
+    // Function to draw an arrow pointing right
+    // changes the button text when clicked
+    protected void arrow(Object sender, EventArgs h)
+    {if(arrow_visible)
+        {arrow_visible = false;
+         hidebutton.Text = "Show";
+        }
+     else
+        {arrow_visible = true;
+         hidebutton.Text = "Hide";
+        }
+     displaypanel.Invalidate();
+   }// End of method arrow
+
+    // Function called by quit button to terminate.
     protected void terminate(Object sender, EventArgs i)
-    {System.Console.WriteLine("This program will close.");
+    {System.Console.WriteLine("This program will now quit.");
       Close();
     }
 
- // Graphic Class to output sign
+ // Graphic class to output a panel
  public class Graphicpanel: Panel
       {public Graphicpanel()
-      {Console.WriteLine("A graphic enabled panel was created");}
-    } //End of graphics constructor
+      {Console.WriteLine("A graphic panel was created.");}
+
+   // function will call onpaint to display graphic
+   // (x, y, width, length) : make several circles to form an arrow
+   protected override void OnPaint(PaintEventArgs ee)
+        {Graphics graph = ee.Graphics;
+          if(arrow_visible) {
+            graph.FillEllipse(Brushes.Violet, 100, 500, 150, 150);
+          }
+          base.OnPaint(ee);
+        } // OnPaint constructor
+
+    } // End of graphics constructor
 
   } // End of main class
