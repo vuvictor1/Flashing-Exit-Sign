@@ -87,7 +87,7 @@ public class Exitui: Form
      author.Location = new Point(330, 80);
      exit_message.Location = new Point(350, 60);
      hide_button.Location = new Point(220, 50);
-     quit_button.Location = new Point(720, 50);
+     quit_button.Location = new Point(690, 50);
      header_panel.Location = new Point(0, 0);
      display_panel.Location = new Point(0, 200);
      control_panel.Location = new Point(0, 1054);
