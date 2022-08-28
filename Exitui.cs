@@ -141,17 +141,17 @@ public class Exitui: Form
         {Graphics graph = ee.Graphics;
           if(arrow_visible) {
             graph.FillEllipse(Brushes.Crimson, 100, 500, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 250, 500, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 400, 500, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 550, 500, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 700, 500, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 850, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 240, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 390, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 540, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 690, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 840, 500, 80, 80);
 
-            graph.FillEllipse(Brushes.Crimson, 775, 350, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 625, 275, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 765, 350, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 615, 275, 80, 80);
 
-            graph.FillEllipse(Brushes.Crimson, 775, 650, 80, 80);
-            graph.FillEllipse(Brushes.Crimson, 625, 725, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 765, 650, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 615, 725, 80, 80);
           }
           base.OnPaint(ee);
         } // OnPaint constructor
