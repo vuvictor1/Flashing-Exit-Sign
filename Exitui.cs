@@ -140,18 +140,18 @@ public class Exitui: Form
    protected override void OnPaint(PaintEventArgs ee)
         {Graphics graph = ee.Graphics;
           if(arrow_visible) {
-            graph.FillEllipse(Brushes.Crimson, 100, 500, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 250, 500, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 400, 500, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 550, 500, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 700, 500, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 850, 500, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 100, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 250, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 400, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 550, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 700, 500, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 850, 500, 80, 80);
 
-            graph.FillEllipse(Brushes.Crimson, 775, 350, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 625, 275, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 775, 350, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 625, 275, 80, 80);
 
-            graph.FillEllipse(Brushes.Crimson, 775, 650, 90, 90);
-            graph.FillEllipse(Brushes.Crimson, 625, 725, 90, 90);
+            graph.FillEllipse(Brushes.Crimson, 775, 650, 80, 80);
+            graph.FillEllipse(Brushes.Crimson, 625, 725, 80, 80);
           }
           base.OnPaint(ee);
         } // OnPaint constructor
