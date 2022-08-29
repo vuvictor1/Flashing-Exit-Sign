@@ -42,6 +42,7 @@ public class Exitui: Form
  private static bool arrow_visible = true; // delcare bool to check if arrow is visible
 
 // Initialize Variables
+// uses attributes included in form class
  public Exitui() {
      // Assign a size to the ui
      MaximumSize = max_exit_ui_size;
