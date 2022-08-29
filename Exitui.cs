@@ -54,7 +54,6 @@ public class Exitui: Form
  private int fast_interval_int = (int)System.Math.Round(fast_interval);
  private int slow_interval_int = (int)System.Math.Round(slow_interval);
 
-
 // Initialize Variables
 // text and size are attributes included in form
  public Exitui() {
