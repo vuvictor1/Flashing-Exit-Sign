@@ -76,8 +76,8 @@ public class Exitui: Form
      // Set text fonts and font size
      author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
      exit_message.Font = new Font("Highway Gothic", 130, FontStyle.Bold);
-     hide_button.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
-     quit_button.Font = new Font("Liberation Serif", 15, FontStyle.Regular);
+     hide_button.Font = new Font("Arial", 15, FontStyle.Regular);
+     quit_button.Font = new Font("Arial", 15, FontStyle.Regular);
 
      // Set text alignment
      author.TextAlign = ContentAlignment.MiddleCenter;
