@@ -42,7 +42,7 @@ public class Exitui: Form
  private static bool arrow_visible = true; // delcare bool to check if arrow is visible
 
 // Initialize Variables
-// uses attributes included in form class
+// text and size are attributes included in form
  public Exitui() {
      // Assign a size to the ui
      MaximumSize = max_exit_ui_size;
@@ -138,8 +138,8 @@ public class Exitui: Form
 
    // function will call onpaint to display graphic
    // (x, y, width, length) : make several circles to form an arrow
-   protected override void OnPaint(PaintEventArgs ee)
-        {Graphics graph = ee.Graphics;
+   protected override void OnPaint(PaintEventArgs ii)
+        {Graphics graph = ii.Graphics;
           if(arrow_visible) {
             graph.FillEllipse(Brushes.Crimson, 100, 500, 80, 80);
             graph.FillEllipse(Brushes.Crimson, 240, 500, 80, 80);
@@ -154,7 +154,7 @@ public class Exitui: Form
             graph.FillEllipse(Brushes.Crimson, 765, 650, 80, 80);
             graph.FillEllipse(Brushes.Crimson, 615, 725, 80, 80);
           }
-          base.OnPaint(ee);
+          base.OnPaint(ii);
         } // OnPaint constructor
 
     } // End of graphics constructor
