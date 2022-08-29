@@ -8,5 +8,6 @@ Run Bash File: sh r.sh
 ***Requirements:***
 - mono-complete
 
-![Capture](https://user-images.githubusercontent.com/78053016/187042453-cad1bc5e-917f-498e-bdbc-032c48277a02.PNG)
+![Capture](https://user-images.githubusercontent.com/78053016/187242503-b2d61ea5-9a77-49e6-ac57-c998517ee0ad.PNG)
+
 
