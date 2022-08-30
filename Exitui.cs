@@ -127,12 +127,14 @@ public class Exitui: Form
     // Function to draw an arrow pointing right
     // changes the button text when clicked
     protected void arrow(Object sender, EventArgs h)
-    {if(arrow_visible)
-        {arrow_visible = false;
+    {
+      if(arrow_visible) {
+
+         arrow_visible = false;
          hide_button.Text = "Show";
         }
-     else
-        {arrow_visible = true;
+     else {
+        arrow_visible = true;
          hide_button.Text = "Hide";
         }
      display_panel.Invalidate();
@@ -145,8 +147,8 @@ public class Exitui: Form
     }
 
  // Graphic class to output a panel
- public class Graphicpanel: Panel
-      {public Graphicpanel()
+ public class Graphicpanel: Panel {
+      public Graphicpanel()
       {Console.WriteLine("A graphic panel was created.");}
 
    // function will call onpaint to display graphic
