@@ -32,6 +32,7 @@ public class Exitui: Form
 {private Label author = new Label();
  private Label exit_message = new Label();
  private Button hide_button = new Button();
+ private Button fast_button = new Button();
  private Button quit_button = new Button();
  private Panel header_panel = new Panel();
  private Graphicpanel display_panel = new Graphicpanel();
@@ -67,6 +68,7 @@ public class Exitui: Form
      exit_message.Text = "Exit";
      exit_message.ForeColor = System.Drawing.Color.Purple;
      hide_button.Text = "Hide";
+     fast_button.Text = "Fast";
      quit_button.Text = "Quit";
 
      // Set size values of buttons, textboxes,
@@ -74,6 +76,7 @@ public class Exitui: Form
      author.Size = new Size(370, 40);
      exit_message.Size = new Size(300, 200);
      hide_button.Size = new Size(120, 60);
+     fast_button.Size = new Size(120, 60);
      quit_button.Size = new Size(120, 60);
      header_panel.Size = new Size(1024, 200);
      display_panel.Size = new Size(1024, 855);
@@ -84,12 +87,14 @@ public class Exitui: Form
      display_panel.BackColor = Color.Gold;
      control_panel.BackColor = Color.DeepSkyBlue;
      hide_button.BackColor = Color.LimeGreen;
+     fast_button.BackColor = Color.LimeGreen;
      quit_button.BackColor = Color.LimeGreen;
 
      // Set text fonts and font size
      author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
      exit_message.Font = new Font("Highway Gothic", 130, FontStyle.Bold);
      hide_button.Font = new Font("Arial", 15, FontStyle.Regular);
+     fast_button.Font = new Font("Arial", 15, FontStyle.Regular);
      quit_button.Font = new Font("Arial", 15, FontStyle.Regular);
 
      // Set text alignment
@@ -101,6 +106,7 @@ public class Exitui: Form
      author.Location = new Point(330, 80);
      exit_message.Location = new Point(350, 60);
      hide_button.Location = new Point(220, 50);
+     fast_button.Location = new Point(455, 50);
      quit_button.Location = new Point(690, 50);
      header_panel.Location = new Point(0, 0);
      display_panel.Location = new Point(0, 200);
@@ -113,10 +119,12 @@ public class Exitui: Form
      display_panel.Controls.Add(exit_message);
      Controls.Add(control_panel);
      control_panel.Controls.Add(hide_button);
+     control_panel.Controls.Add(fast_button);
      control_panel.Controls.Add(quit_button);
 
      // Control buttons when clicked
      hide_button.Click += new EventHandler(arrow);
+     //fast_button.Click += new EventHandler();
      quit_button.Click += new EventHandler(terminate);
 
      // Center the screen when program is opened
