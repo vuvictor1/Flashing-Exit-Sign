@@ -31,7 +31,7 @@ using System.Windows.Forms;
 public class Exitui: Form
 {private Label author = new Label();
  private Label exit_message = new Label();
- private Button hide_button = new Button();
+ private Button start_button = new Button();
  private Button fast_button = new Button();
  private Button quit_button = new Button();
  private Panel header_panel = new Panel();
@@ -67,7 +67,7 @@ public class Exitui: Form
      author.Text = "Exit Sign by Victor V. Vu";
      exit_message.Text = "Exit";
      exit_message.ForeColor = System.Drawing.Color.Purple;
-     hide_button.Text = "Hide";
+     start_button.Text = "Start";
      fast_button.Text = "Fast";
      quit_button.Text = "Quit";
 
@@ -75,7 +75,7 @@ public class Exitui: Form
      // & panels (width, length)
      author.Size = new Size(370, 40);
      exit_message.Size = new Size(300, 200);
-     hide_button.Size = new Size(120, 60);
+     start_button.Size = new Size(120, 60);
      fast_button.Size = new Size(120, 60);
      quit_button.Size = new Size(120, 60);
      header_panel.Size = new Size(1024, 200);
@@ -86,14 +86,14 @@ public class Exitui: Form
      header_panel.BackColor = Color.Cornsilk;
      display_panel.BackColor = Color.Gold;
      control_panel.BackColor = Color.DeepSkyBlue;
-     hide_button.BackColor = Color.LimeGreen;
+     start_button.BackColor = Color.LimeGreen;
      fast_button.BackColor = Color.LimeGreen;
      quit_button.BackColor = Color.LimeGreen;
 
      // Set text fonts and font size
      author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
      exit_message.Font = new Font("Highway Gothic", 130, FontStyle.Bold);
-     hide_button.Font = new Font("Arial", 15, FontStyle.Regular);
+     start_button.Font = new Font("Arial", 15, FontStyle.Regular);
      fast_button.Font = new Font("Arial", 15, FontStyle.Regular);
      quit_button.Font = new Font("Arial", 15, FontStyle.Regular);
 
@@ -105,7 +105,7 @@ public class Exitui: Form
      header_panel.Location = new Point(0, 0);
      author.Location = new Point(330, 80);
      exit_message.Location = new Point(350, 60);
-     hide_button.Location = new Point(220, 50);
+     start_button.Location = new Point(220, 50);
      fast_button.Location = new Point(455, 50);
      quit_button.Location = new Point(690, 50);
      header_panel.Location = new Point(0, 0);
@@ -118,12 +118,12 @@ public class Exitui: Form
      Controls.Add(display_panel);
      display_panel.Controls.Add(exit_message);
      Controls.Add(control_panel);
-     control_panel.Controls.Add(hide_button);
+     control_panel.Controls.Add(start_button);
      control_panel.Controls.Add(fast_button);
      control_panel.Controls.Add(quit_button);
 
      // Control buttons when clicked
-     hide_button.Click += new EventHandler(arrow);
+     start_button.Click += new EventHandler(arrow);
      //fast_button.Click += new EventHandler();
      quit_button.Click += new EventHandler(terminate);
 
@@ -139,11 +139,11 @@ public class Exitui: Form
       if(arrow_visible) {
 
          arrow_visible = false;
-         hide_button.Text = "Show";
+         start_button.Text = "Resume";
         }
      else {
         arrow_visible = true;
-         hide_button.Text = "Hide";
+         start_button.Text = "Start";
         }
      display_panel.Invalidate();
    }// End of method arrow
