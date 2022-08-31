@@ -134,7 +134,7 @@ public class Exitui: Form
      // clock controls
      exit_clock.Enabled = false;
      exit_clock.Elapsed += new ElapsedEventHandler(refresh);
-     exit_clock.Interval = 4;  
+     exit_clock.Interval = 4;
      exit_clock.Enabled = true;
 
      // Center the screen when program is opened
@@ -158,7 +158,7 @@ public class Exitui: Form
         }
      else {
         arrow_visible = true;
-         start_button.Text = "Start";
+         start_button.Text = "Pause";
         }
      display_panel.Invalidate();
    }// End of method arrow
