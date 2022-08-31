@@ -149,11 +149,11 @@ public class Exitui: Form
       if(arrow_visible) {
          exit_clock.Enabled = true;
          arrow_visible = false;
-         start_button.Text = "Resume";
+         start_button.Text = "Pause";
         }
      else {
         arrow_visible = true;
-         start_button.Text = "Pause";
+         start_button.Text = "Resume";
         }
      display_panel.Invalidate();
     }// End of method arrow
