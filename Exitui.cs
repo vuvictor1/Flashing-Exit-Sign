@@ -132,20 +132,15 @@ public class Exitui: Form
      quit_button.Click += new EventHandler(terminate);
 
      // clock controls
-     exit_clock.Enabled = false;
-     exit_clock.Elapsed += new ElapsedEventHandler(refresh);
-     exit_clock.Interval = 4;
+     //exit_clock.Enabled = false;
+     exit_clock.Elapsed += new ElapsedEventHandler(arrow);
+     exit_clock.Interval = slow_interval_int;
      exit_clock.Enabled = true;
 
      // Center the screen when program is opened
      CenterToScreen();
 
    } // End of ui constructor
-
-    // sign refresher
-    protected void refresh(Object sender, EventArgs h) {
-    Invalidate();
-    }
 
     // Function to draw an arrow pointing right
     // changes the button text when clicked
