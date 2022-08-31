@@ -26,6 +26,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Timers;
 
 // Call on functions from the form library
 public class Exitui: Form
@@ -41,6 +42,9 @@ public class Exitui: Form
  private Size min_exit_ui_size = new Size(1024, 1280);
 
  private static bool arrow_visible = true; // delcare bool to check if arrow is visible
+
+ // delcare new timer
+ private static System.Timers.Timer exit_clock = new System.Timers.Timer();
 
  // Control speed of clocks in Hz
  private const double fast_clock = 9.0;
@@ -127,10 +131,21 @@ public class Exitui: Form
      //fast_button.Click += new EventHandler();
      quit_button.Click += new EventHandler(terminate);
 
+     // clock controls
+     exit_clock.Enabled = false;
+     exit_clock.Elapsed += new ElapsedEventHandler(refresh);
+     exit_clock.Interval = 4;  
+     exit_clock.Enabled = true;
+
      // Center the screen when program is opened
      CenterToScreen();
 
    } // End of ui constructor
+
+    // sign refresher
+    protected void refresh(Object sender, EventArgs h) {
+    Invalidate();
+    }
 
     // Function to draw an arrow pointing right
     // changes the button text when clicked
