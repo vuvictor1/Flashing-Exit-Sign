@@ -130,10 +130,9 @@ public class Exitui: Form
      start_button.Click += new EventHandler(arrow);
 
      // clock controls
-     //exit_clock.Enabled = false;
+     exit_clock.Enabled = false;
      exit_clock.Elapsed += new ElapsedEventHandler(arrow);
      exit_clock.Interval = slow_interval_int;
-     exit_clock.Enabled = true;
 
      //fast_button.Click += new EventHandler();
      quit_button.Click += new EventHandler(terminate);
@@ -148,7 +147,7 @@ public class Exitui: Form
     protected void arrow(Object sender, EventArgs h)
     {
       if(arrow_visible) {
-
+         exit_clock.Enabled = true;
          arrow_visible = false;
          start_button.Text = "Resume";
         }
