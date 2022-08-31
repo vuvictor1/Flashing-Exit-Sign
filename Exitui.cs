@@ -134,7 +134,7 @@ public class Exitui: Form
      exit_clock.Elapsed += new ElapsedEventHandler(arrow);
      exit_clock.Interval = slow_interval_int;
 
-     //fast_button.Click += new EventHandler();
+     fast_button.Click += new EventHandler(fast);
      quit_button.Click += new EventHandler(terminate);
 
      // Center the screen when program is opened
@@ -156,7 +156,12 @@ public class Exitui: Form
          start_button.Text = "Pause";
         }
      display_panel.Invalidate();
-   }// End of method arrow
+    }// End of method arrow
+
+    // change the speed of the clock
+    protected void fast(Object sender, EventArgs h) {
+      exit_clock.Interval = fast_interval_int;
+    }
 
     // Function called by quit button to terminate.
     protected void terminate(Object sender, EventArgs i)
