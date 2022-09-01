@@ -147,14 +147,14 @@ public class Exitui: Form
     protected void arrow(Object sender, EventArgs h)
     {
       if(arrow_visible) {
-         exit_clock.Enabled = true;
          arrow_visible = false;
          start_button.Text = "Pause";
         }
      else {
         arrow_visible = true;
-         start_button.Text = "Resume";
+        start_button.Text = "Resume";
         }
+     exit_clock.Enabled = true;
      display_panel.Invalidate();
     }// End of method arrow
 
