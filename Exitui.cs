@@ -43,7 +43,7 @@ public class Exitui : Form {
 
   private static bool arrow_visible = true; // bool to check if arrow is visible
 
-  // set up states to use in switches
+  // set up states 
   private enum State { starting, paused, flashing };
   private enum Current_speed { fast, slow };
 
