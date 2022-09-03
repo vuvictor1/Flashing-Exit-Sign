@@ -41,14 +41,11 @@ public class Exitui : Form {
   private Size max_exit_ui_size = new Size(1024, 1280);
   private Size min_exit_ui_size = new Size(1024, 1280);
 
-  private static bool arrow_visible =
-      true; // delcare bool to check if arrow is visible
+  private static bool arrow_visible = true; // bool to check if arrow is visible
 
   // set up states to use in switches
-  private enum State { starting, paused, flashing }
-  ;
-  private enum Current_speed { fast, slow }
-  ;
+  private enum State { starting, paused, flashing };
+  private enum Current_speed { fast, slow };
 
   // delcare new timer
   private static System.Timers.Timer exit_clock = new System.Timers.Timer();
@@ -56,17 +53,15 @@ public class Exitui : Form {
   // Control speed of clocks in Hz
   private const double fast_clock = 9.0;
   private const double slow_clock = 2.0;
-
   // set interval speed of one second in ms
   private const double one_second = 1000.0;
   private const double fast_interval = (one_second / fast_clock);
   private const double slow_interval = (one_second / slow_clock);
-
   // Round up interval and assign them
   private int fast_interval_int = (int)System.Math.Round(fast_interval);
   private int slow_interval_int = (int)System.Math.Round(slow_interval);
 
-  // default cases in the switch
+  // default cases in the switch statement
   private State program_status = State.starting;
   private Current_speed speed = Current_speed.slow;
 
@@ -174,11 +169,11 @@ public class Exitui : Form {
     display_panel.Invalidate();
   } // End of start
 
-  // The function is called when the clock tics
+  // This function is called when the clock tics
   protected void refresh(Object sender, EventArgs h) {
     arrow_visible = !arrow_visible;
     display_panel.Invalidate(); // Invalidate calls OnPaint
-  }                             // End of method refresh
+  } // End of method refresh
 
   // change the speed of the clock
   protected void speed_control(Object sender, EventArgs h) {
@@ -191,7 +186,7 @@ public class Exitui : Form {
       speed_control_button.Text = "Fast";
       exit_clock.Interval = slow_interval_int;
     }
-  } // End
+  } // End of speed function
 
   // Function called by quit button to terminate.
   protected void terminate(Object sender, EventArgs h) {
