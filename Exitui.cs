@@ -47,7 +47,7 @@ public class Exitui : Form {
   private enum State { starting, paused, flashing };
   private enum Current_speed { fast, slow };
 
-  // default cases in the switch statement
+  // default states
   private State program_status = State.starting;
   private Current_speed speed = Current_speed.slow;
 
