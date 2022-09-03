@@ -33,7 +33,7 @@ public class Exitui: Form
 {private Label author = new Label();
  private Label exit_message = new Label();
  private Button start_button = new Button();
- private Button fast_button = new Button();
+ private Button speed_control_button = new Button();
  private Button quit_button = new Button();
  private Panel header_panel = new Panel();
  private Graphicpanel display_panel = new Graphicpanel();
@@ -42,6 +42,10 @@ public class Exitui: Form
  private Size min_exit_ui_size = new Size(1024, 1280);
 
  private static bool arrow_visible = true; // delcare bool to check if arrow is visible
+
+ // set up states to use in switches
+ private enum State {starting, paused, flashing};
+ private enum Current_speed {fast, slow};
 
  // delcare new timer
  private static System.Timers.Timer exit_clock = new System.Timers.Timer();
@@ -59,8 +63,11 @@ public class Exitui: Form
  private int fast_interval_int = (int)System.Math.Round(fast_interval);
  private int slow_interval_int = (int)System.Math.Round(slow_interval);
 
+ private State program_status = State.starting;
+ private Current_speed speed_now = Current_speed.slow;
+
 // Initialize Variables
-// text and size are attributes included in form
+// Text and Size are attributes included in form
  public Exitui() {
      // Assign a size to the ui
      MaximumSize = max_exit_ui_size;
@@ -72,7 +79,7 @@ public class Exitui: Form
      exit_message.Text = "Exit";
      exit_message.ForeColor = System.Drawing.Color.Purple;
      start_button.Text = "Start";
-     fast_button.Text = "Fast";
+     speed_control_button.Text = "Fast";
      quit_button.Text = "Quit";
 
      // Set size values of buttons, textboxes,
@@ -80,7 +87,7 @@ public class Exitui: Form
      author.Size = new Size(370, 40);
      exit_message.Size = new Size(300, 200);
      start_button.Size = new Size(120, 60);
-     fast_button.Size = new Size(120, 60);
+     speed_control_button.Size = new Size(120, 60);
      quit_button.Size = new Size(120, 60);
      header_panel.Size = new Size(1024, 200);
      display_panel.Size = new Size(1024, 855);
@@ -91,14 +98,14 @@ public class Exitui: Form
      display_panel.BackColor = Color.Gold;
      control_panel.BackColor = Color.DeepSkyBlue;
      start_button.BackColor = Color.LimeGreen;
-     fast_button.BackColor = Color.LimeGreen;
+     speed_control_button.BackColor = Color.LimeGreen;
      quit_button.BackColor = Color.LimeGreen;
 
      // Set text fonts and font size
      author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
      exit_message.Font = new Font("Highway Gothic", 130, FontStyle.Bold);
      start_button.Font = new Font("Arial", 15, FontStyle.Regular);
-     fast_button.Font = new Font("Arial", 15, FontStyle.Regular);
+     speed_control_button.Font = new Font("Arial", 15, FontStyle.Regular);
      quit_button.Font = new Font("Arial", 15, FontStyle.Regular);
 
      // Set text alignment
@@ -110,7 +117,7 @@ public class Exitui: Form
      author.Location = new Point(330, 80);
      exit_message.Location = new Point(350, 60);
      start_button.Location = new Point(220, 50);
-     fast_button.Location = new Point(455, 50);
+     speed_control_button.Location = new Point(455, 50);
      quit_button.Location = new Point(690, 50);
      header_panel.Location = new Point(0, 0);
      display_panel.Location = new Point(0, 200);
@@ -123,51 +130,70 @@ public class Exitui: Form
      display_panel.Controls.Add(exit_message);
      Controls.Add(control_panel);
      control_panel.Controls.Add(start_button);
-     control_panel.Controls.Add(fast_button);
+     control_panel.Controls.Add(speed_control_button);
      control_panel.Controls.Add(quit_button);
 
      // Control buttons when clicked
-     start_button.Click += new EventHandler(arrow);
+     start_button.Click += new EventHandler(start);
+     speed_control_button.Click += new EventHandler(speed_control);
+     quit_button.Click += new EventHandler(terminate);
 
      // clock controls
      exit_clock.Enabled = false;
      exit_clock.Elapsed += new ElapsedEventHandler(arrow);
      exit_clock.Interval = slow_interval_int;
 
-     fast_button.Click += new EventHandler(fast);
-     quit_button.Click += new EventHandler(terminate);
-
      // Center the screen when program is opened
      CenterToScreen();
 
    } // End of ui constructor
 
-    // Function to draw an arrow pointing right
-    // changes the button text when clicked
-    protected void arrow(Object sender, EventArgs h)
-    {
-      exit_clock.Enabled = true;
-      if(arrow_visible) {
-         arrow_visible = false;
-         start_button.Text = "Pause";
-        }
-     else {
-        arrow_visible = true;
-        start_button.Text = "Resume";
-        }
-
+    protected void start (Object sender, EventArgs h)
+    {switch (program_status){
+     case State.starting:
+                 exit_clock.Enabled = true;
+                 start_button.Text = "Pause";
+                 program_status = State.flashing;
+                 break;
+     case State.flashing:
+                 exit_clock.Enabled = false;
+                 start_button.Text = "Resume";
+                 program_status = State.paused;
+                 break;
+     case State.paused:
+                 exit_clock.Enabled = true;
+                 start_button.Text = "Pause";
+                 program_status = State.flashing;
+                 break;
+     }//End of switch
      display_panel.Invalidate();
+    }//End of start
+
+    // Function to draw an arrow pointing right
+    // The function is called when the clock tics
+    protected void arrow(Object sender, EventArgs h)
+    {arrow_visible = !arrow_visible;
+     display_panel.Invalidate();    //Invalidate calls OnPaint
     }// End of method arrow
 
     // change the speed of the clock
-    protected void fast(Object sender, EventArgs h) {
-      exit_clock.Interval = fast_interval_int;
-    }
+    protected void speed_control(Object sender, EventArgs h) {
+     if (speed_now == Current_speed.slow)
+           {speed_now = Current_speed.fast;
+            speed_control_button.Text = "Slow";
+            exit_clock.Interval = fast_interval_int;
+           }
+     else
+           {speed_now = Current_speed.slow;
+            speed_control_button.Text = "Fast";
+            exit_clock.Interval = slow_interval_int;
+           }
+    }//End
 
     // Function called by quit button to terminate.
-    protected void terminate(Object sender, EventArgs i)
+    protected void terminate(Object sender, EventArgs h)
     {System.Console.WriteLine("This program will now quit.");
-      Close();
+     Close();
     }
 
  // Graphic class to output a panel
@@ -186,10 +212,8 @@ public class Exitui: Form
             graph.FillEllipse(Brushes.Crimson, 540, 500, 80, 80);
             graph.FillEllipse(Brushes.Crimson, 690, 500, 80, 80);
             graph.FillEllipse(Brushes.Crimson, 840, 500, 80, 80);
-
             graph.FillEllipse(Brushes.Crimson, 765, 350, 80, 80);
             graph.FillEllipse(Brushes.Crimson, 615, 275, 80, 80);
-
             graph.FillEllipse(Brushes.Crimson, 765, 650, 80, 80);
             graph.FillEllipse(Brushes.Crimson, 615, 725, 80, 80);
           }
