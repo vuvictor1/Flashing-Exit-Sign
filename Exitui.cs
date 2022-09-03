@@ -54,10 +54,10 @@ public class Exitui: Form
  private const double fast_clock = 9.0;
  private const double slow_clock = 2.0;
 
- // set interval speed in one second
- private const double one_second = 1000.0;  //ms
- private const double fast_interval = one_second/fast_clock;
- private const double slow_interval = one_second/slow_clock;
+ // set interval speed of one second in ms
+ private const double one_second = 1000.0;
+ private const double fast_interval = (one_second/fast_clock);
+ private const double slow_interval = (one_second/slow_clock);
 
  // Round up interval and assign them
  private int fast_interval_int = (int)System.Math.Round(fast_interval);
