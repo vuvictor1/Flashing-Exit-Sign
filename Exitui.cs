@@ -63,6 +63,7 @@ public class Exitui: Form
  private int fast_interval_int = (int)System.Math.Round(fast_interval);
  private int slow_interval_int = (int)System.Math.Round(slow_interval);
 
+ // default cases in the switch
  private State program_status = State.starting;
  private Current_speed speed_now = Current_speed.slow;
 
