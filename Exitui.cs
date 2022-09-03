@@ -141,7 +141,7 @@ public class Exitui: Form
 
      // clock controls
      exit_clock.Enabled = false;
-     exit_clock.Elapsed += new ElapsedEventHandler(arrow);
+     exit_clock.Elapsed += new ElapsedEventHandler(refresh);
      exit_clock.Interval = slow_interval_int;
 
      // Center the screen when program is opened
@@ -172,7 +172,7 @@ public class Exitui: Form
 
     // Function to draw an arrow pointing right
     // The function is called when the clock tics
-    protected void arrow(Object sender, EventArgs h)
+    protected void refresh(Object sender, EventArgs h)
     {arrow_visible = !arrow_visible;
      display_panel.Invalidate();    //Invalidate calls OnPaint
     }// End of method arrow
