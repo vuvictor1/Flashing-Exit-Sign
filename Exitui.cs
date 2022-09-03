@@ -65,7 +65,7 @@ public class Exitui: Form
 
  // default cases in the switch
  private State program_status = State.starting;
- private Current_speed speed_now = Current_speed.slow;
+ private Current_speed speed = Current_speed.slow;
 
 // Initialize Variables
 // Text and Size are attributes included in form
@@ -149,6 +149,7 @@ public class Exitui: Form
 
    } // End of ui constructor
 
+    // Function to draw an arrow pointing right
     protected void start (Object sender, EventArgs h)
     {switch (program_status){
      case State.starting:
@@ -166,30 +167,29 @@ public class Exitui: Form
                  start_button.Text = "Pause";
                  program_status = State.flashing;
                  break;
-     }//End of switch
+     } // End of switch
      display_panel.Invalidate();
-    }//End of start
+    } // End of start
 
-    // Function to draw an arrow pointing right
     // The function is called when the clock tics
     protected void refresh(Object sender, EventArgs h)
     {arrow_visible = !arrow_visible;
-     display_panel.Invalidate();    //Invalidate calls OnPaint
-    }// End of method arrow
+     display_panel.Invalidate(); // Invalidate calls OnPaint
+   } // End of method refresh
 
     // change the speed of the clock
     protected void speed_control(Object sender, EventArgs h) {
-     if (speed_now == Current_speed.slow)
-           {speed_now = Current_speed.fast;
+     if (speed == Current_speed.slow)
+           {speed = Current_speed.fast;
             speed_control_button.Text = "Slow";
             exit_clock.Interval = fast_interval_int;
            }
      else
-           {speed_now = Current_speed.slow;
+           {speed = Current_speed.slow;
             speed_control_button.Text = "Fast";
             exit_clock.Interval = slow_interval_int;
            }
-    }//End
+    } // End
 
     // Function called by quit button to terminate.
     protected void terminate(Object sender, EventArgs h)
