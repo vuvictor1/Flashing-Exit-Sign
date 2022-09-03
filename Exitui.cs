@@ -146,6 +146,7 @@ public class Exitui: Form
     // changes the button text when clicked
     protected void arrow(Object sender, EventArgs h)
     {
+      exit_clock.Enabled = true;
       if(arrow_visible) {
          arrow_visible = false;
          start_button.Text = "Pause";
@@ -154,7 +155,7 @@ public class Exitui: Form
         arrow_visible = true;
         start_button.Text = "Resume";
         }
-     exit_clock.Enabled = true;
+
      display_panel.Invalidate();
     }// End of method arrow
 
