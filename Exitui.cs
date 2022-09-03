@@ -47,6 +47,10 @@ public class Exitui : Form {
   private enum State { starting, paused, flashing };
   private enum Current_speed { fast, slow };
 
+  // default cases in the switch statement
+  private State program_status = State.starting;
+  private Current_speed speed = Current_speed.slow;
+
   // delcare new timer
   private static System.Timers.Timer exit_clock = new System.Timers.Timer();
 
@@ -60,10 +64,6 @@ public class Exitui : Form {
   // Round up interval and assign them
   private int fast_interval_int = (int)System.Math.Round(fast_interval);
   private int slow_interval_int = (int)System.Math.Round(slow_interval);
-
-  // default cases in the switch statement
-  private State program_status = State.starting;
-  private Current_speed speed = Current_speed.slow;
 
   // Initialize Variables
   // Text and Size are attributes included in form
