@@ -166,7 +166,6 @@ public class Exitui : Form {
       program_status = State.flashing;
       break;
     } // End of switch
-    display_panel.Invalidate();
   } // End of start
 
   // This function is called when the clock tics
