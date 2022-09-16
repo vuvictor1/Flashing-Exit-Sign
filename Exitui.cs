@@ -6,7 +6,7 @@
 //
 // Program Information:
 // Program Name: Colored Exit Sign
-// This File: exitui.cpp
+// This File: Exitui.cs
 // Description: UI file containing graphics for the exit sign
 //******************************************************************************
 // Copyright (C) 2022 Victor V. Vu
