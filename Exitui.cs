@@ -112,7 +112,6 @@ public class Exitui : Form {
     exit_message.TextAlign = ContentAlignment.MiddleCenter;
 
     // Set locations (width, length)
-    header_panel.Location = new Point(0, 0);
     author.Location = new Point(330, 80);
     exit_message.Location = new Point(350, 60);
     start_button.Location = new Point(220, 50);
