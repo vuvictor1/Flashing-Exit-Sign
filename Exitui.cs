@@ -5,9 +5,9 @@
 // Section: 223N-01
 //
 // Program Information:
-// Program Name: Colored Exit Sign
-// This File: Exitui.cs
-// Description: UI file containing graphics for the exit sign
+// Program Name: Rolling Ball
+// This File: Ballui.cs
+// Description: UI file containing animations for the rolling ball
 //******************************************************************************
 // Copyright (C) 2022 Victor V. Vu
 // This program is free software: you can redistribute it and/or modify it under
@@ -28,163 +28,154 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Timers;
 
-// Call on functions from the form library
-public class Exitui : Form {
+// Call functions from form library & delcare variables
+public class Ballui : Form {
   private Label author = new Label();
-  private Label exit_message = new Label();
-  private Button start_button = new Button();
-  private Button speed_control_button = new Button();
+  private Label start = new Label();
+  private Label finish = new Label();
+  private TextBox start_input1 = new TextBox();
+  private TextBox start_input2 = new TextBox();
+  private TextBox finish_input1 = new TextBox();
+  private TextBox finish_input2 = new TextBox();
+  private Button go_button = new Button();
+  private Label location = new Label();
+  private TextBox locate_cords = new TextBox();
   private Button quit_button = new Button();
   private Panel header_panel = new Panel();
   private Graphicpanel display_panel = new Graphicpanel();
   private Panel control_panel = new Panel();
-  private Size max_exit_ui_size = new Size(1024, 1280);
-  private Size min_exit_ui_size = new Size(1024, 1280);
+  private Size max_exit_ui_size = new Size(1024, 800);
+  private Size min_exit_ui_size = new Size(1024, 800);
 
-  private static bool arrow_visible = true; // bool to check if arrow is visible
-
-  // set up states 
-  private enum State { starting, paused, flashing };
-  private enum Current_speed { fast, slow };
-
-  // default states
-  private State program_status = State.starting;
-  private Current_speed speed = Current_speed.slow;
-
-  // delcare new timer
-  private static System.Timers.Timer exit_clock = new System.Timers.Timer();
-
-  // Control speed of clocks in Hz
-  private const double fast_clock = 9.0;
-  private const double slow_clock = 2.0;
-  // set interval speed of one second in ms
-  private const double one_second = 1000.0;
-  private const double fast_interval = (one_second / fast_clock);
-  private const double slow_interval = (one_second / slow_clock);
-  // Round up interval and assign them
-  private int fast_interval_int = (int)System.Math.Round(fast_interval);
-  private int slow_interval_int = (int)System.Math.Round(slow_interval);
-
+  private static bool line_visible = false; // bool to check if line is visible
+  private enum State { starting, paused }
+  ;                                              // set up switch states
+  private State program_status = State.starting; // default state
   // Initialize Variables
   // Text and Size are attributes included in form
-  public Exitui() {
+  public Ballui() {
     // Assign a size to the ui
     MaximumSize = max_exit_ui_size;
     MinimumSize = min_exit_ui_size;
 
     // Initialize string variables
-    Text = "Colored Exit Sign";
-    author.Text = "Exit Sign by Victor V. Vu";
-    exit_message.Text = "Exit";
-    exit_message.ForeColor = System.Drawing.Color.Purple;
-    start_button.Text = "Start";
-    speed_control_button.Text = "Fast";
+    Text = "Rolling Ball";
+    author.Text = "Ball in Motion by Victor V. Vu";
+    start.Text = "Start";
+    finish.Text = "Finish";
+    go_button.Text = "Go";
+    location.Text = "Location";
     quit_button.Text = "Quit";
 
     // Set size values of buttons, textboxes,
     // & panels (width, length)
-    author.Size = new Size(370, 40);
-    exit_message.Size = new Size(300, 200);
-    start_button.Size = new Size(120, 60);
-    speed_control_button.Size = new Size(120, 60);
+    author.Size = new Size(440, 40);
+    start.Size = new Size(40, 30);
+    finish.Size = new Size(50, 30);
+    start_input1.Size = new Size(40, 60);
+    start_input2.Size = new Size(40, 60);
+    finish_input1.Size = new Size(50, 60);
+    finish_input2.Size = new Size(40, 60);
+    go_button.Size = new Size(120, 60);
+    location.Size = new Size(75, 30);
+    locate_cords.Size = new Size(70, 60);
     quit_button.Size = new Size(120, 60);
-    header_panel.Size = new Size(1024, 200);
-    display_panel.Size = new Size(1024, 855);
-    control_panel.Size = new Size(1024, 200);
+    header_panel.Size = new Size(1024, 100);
+    display_panel.Size = new Size(1024, 575);
+    control_panel.Size = new Size(1024, 100);
 
     // Set colors for panel and buttons
     header_panel.BackColor = Color.Cornsilk;
-    display_panel.BackColor = Color.Gold;
-    control_panel.BackColor = Color.DeepSkyBlue;
-    start_button.BackColor = Color.LimeGreen;
-    speed_control_button.BackColor = Color.LimeGreen;
-    quit_button.BackColor = Color.LimeGreen;
+    display_panel.BackColor = Color.BurlyWood;
+    control_panel.BackColor = Color.CornflowerBlue;
+    go_button.BackColor = Color.MediumAquamarine;
+    quit_button.BackColor = Color.MediumAquamarine;
 
     // Set text fonts and font size
     author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
-    exit_message.Font = new Font("Highway Gothic", 130, FontStyle.Bold);
-    start_button.Font = new Font("Arial", 15, FontStyle.Regular);
-    speed_control_button.Font = new Font("Arial", 15, FontStyle.Regular);
+    start.Font = new Font("Times New Roman", 15, FontStyle.Regular);
+    finish.Font = new Font("Times New Roman", 15, FontStyle.Regular);
+    start_input1.Font = new Font("Arial", 15, FontStyle.Regular);
+    start_input2.Font = new Font("Arial", 15, FontStyle.Regular);
+    finish_input1.Font = new Font("Arial", 15, FontStyle.Regular);
+    finish_input2.Font = new Font("Arial", 15, FontStyle.Regular);
+    go_button.Font = new Font("Arial", 15, FontStyle.Regular);
+    location.Font = new Font("Times New Roman", 15, FontStyle.Regular);
+    locate_cords.Font = new Font("Arial", 15, FontStyle.Regular);
     quit_button.Font = new Font("Arial", 15, FontStyle.Regular);
 
     // Set text alignment
     author.TextAlign = ContentAlignment.MiddleCenter;
-    exit_message.TextAlign = ContentAlignment.MiddleCenter;
+    start.TextAlign = ContentAlignment.MiddleCenter;
+    finish.TextAlign = ContentAlignment.MiddleCenter;
+    start_input1.TextAlign = HorizontalAlignment.Center;
+    start_input2.TextAlign = HorizontalAlignment.Center;
+    finish_input1.TextAlign = HorizontalAlignment.Center;
+    finish_input2.TextAlign = HorizontalAlignment.Center;
+    location.TextAlign = ContentAlignment.MiddleCenter;
+    locate_cords.TextAlign = HorizontalAlignment.Center;
 
     // Set locations (width, length)
-    author.Location = new Point(330, 80);
-    exit_message.Location = new Point(350, 60);
-    start_button.Location = new Point(220, 50);
-    speed_control_button.Location = new Point(455, 50);
-    quit_button.Location = new Point(690, 50);
+    author.Location = new Point(330, 35);
+    start.Location = new Point(125, 5);
+    finish.Location = new Point(240, 5);
+    start_input1.Location = new Point(100, 40);
+    start_input2.Location = new Point(150, 40);
+    finish_input1.Location = new Point(210, 40);
+    finish_input2.Location = new Point(275, 40);
+    go_button.Location = new Point(420, 20);
+    location.Location = new Point(620, 5);
+    locate_cords.Location = new Point(625, 40);
+    quit_button.Location = new Point(790, 20);
     header_panel.Location = new Point(0, 0);
-    display_panel.Location = new Point(0, 200);
-    control_panel.Location = new Point(0, 1054);
+    display_panel.Location = new Point(0, 100);
+    control_panel.Location = new Point(0, 675);
 
     // Control elements to display
     Controls.Add(header_panel);
     header_panel.Controls.Add(author);
     Controls.Add(display_panel);
-    display_panel.Controls.Add(exit_message);
     Controls.Add(control_panel);
-    control_panel.Controls.Add(start_button);
-    control_panel.Controls.Add(speed_control_button);
+    control_panel.Controls.Add(start);
+    control_panel.Controls.Add(finish);
+    control_panel.Controls.Add(start_input1);
+    control_panel.Controls.Add(start_input2);
+    control_panel.Controls.Add(finish_input1);
+    control_panel.Controls.Add(finish_input2);
+    control_panel.Controls.Add(go_button);
+    control_panel.Controls.Add(location);
+    control_panel.Controls.Add(locate_cords);
     control_panel.Controls.Add(quit_button);
 
     // Control buttons when clicked
-    start_button.Click += new EventHandler(start);
-    speed_control_button.Click += new EventHandler(speed_control);
+    go_button.Click += new EventHandler(go);
     quit_button.Click += new EventHandler(terminate);
-
-    // clock controls
-    exit_clock.Enabled = false;
-    exit_clock.Elapsed += new ElapsedEventHandler(refresh);
-    exit_clock.Interval = slow_interval_int;
 
     // Center the screen when program is opened
     CenterToScreen();
 
   } // End of ui constructor
 
-  // Function to draw an arrow pointing right
-  protected void start(Object sender, EventArgs h) {
+  // Function called to start animation
+  protected void go(Object sender, EventArgs h) {
     switch (program_status) {
     case State.starting:
-      exit_clock.Enabled = true;
-      start_button.Text = "Pause";
-      program_status = State.flashing;
-      break;
-    case State.flashing:
-      exit_clock.Enabled = false;
-      start_button.Text = "Resume";
+      go_button.Text = "Pause";
       program_status = State.paused;
+      line_visible = true;
       break;
     case State.paused:
-      exit_clock.Enabled = true;
-      start_button.Text = "Pause";
-      program_status = State.flashing;
+      go_button.Text = "Resume";
+      program_status = State.starting;
       break;
     } // End of switch
-  } // End of start
+    display_panel.Invalidate();
+  } // End of go
 
   // This function is called when the clock tics
-  protected void refresh(Object sender, EventArgs h) {
-    arrow_visible = !arrow_visible;
-    display_panel.Invalidate(); // Invalidate calls OnPaint
-  } // End of method refresh
-
-  // change the speed of the clock
-  protected void speed_control(Object sender, EventArgs h) {
-    if (speed == Current_speed.slow) {
-      speed = Current_speed.fast;
-      speed_control_button.Text = "Slow";
-      exit_clock.Interval = fast_interval_int;
-    } else {
-      speed = Current_speed.slow;
-      speed_control_button.Text = "Fast";
-      exit_clock.Interval = slow_interval_int;
-    }
-  } // End of speed function
+  // protected void refresh(Object sender, EventArgs h) {
+  //  display_panel.Invalidate(); // Invalidate calls OnPaint
+  //} // End of method refresh
 
   // Function called by quit button to terminate.
   protected void terminate(Object sender, EventArgs h) {
@@ -195,22 +186,13 @@ public class Exitui : Form {
   // Graphic class to output a panel
   public class Graphicpanel : Panel {
     public Graphicpanel() { Console.WriteLine("A graphic panel was created."); }
-
-    // function will call onpaint to display graphic
-    // (x, y, width, length) : make several circles to form an arrow
+    // Function calls onpaint to display graphic
+    // (x, y, width, length) : draw a line & ball
+    Pen bic = new Pen(Color.Black, 2); // (Color, pixel thickness)
     protected override void OnPaint(PaintEventArgs ii) {
       Graphics graph = ii.Graphics;
-      if (arrow_visible) {
-        graph.FillEllipse(Brushes.Crimson, 100, 500, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 240, 500, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 390, 500, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 540, 500, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 690, 500, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 840, 500, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 765, 350, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 615, 275, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 765, 650, 80, 80);
-        graph.FillEllipse(Brushes.Crimson, 615, 725, 80, 80);
+      if (line_visible) {
+        graph.DrawLine(bic, 15, 20, 700, 800);
       }
       base.OnPaint(ii);
     } // OnPaint constructor
