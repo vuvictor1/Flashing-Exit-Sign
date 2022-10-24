@@ -6,7 +6,7 @@
 //
 // Program Information:
 // Program Name: Colored Exit Sign
-// This File: Exitmain.cpp
+// This File: Exitmain.cs
 // Description: Manager file that will call on UI.cs to display graphics
 //******************************************************************************
 // Copyright (C) 2022 Victor V. Vu
