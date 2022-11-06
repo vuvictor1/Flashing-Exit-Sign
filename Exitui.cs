@@ -6,7 +6,7 @@
 //
 // Program Information:
 // Program Name: Colored Exit Sign
-// This File: Exitui.cs
+// This File: exitui.cpp
 // Description: UI file containing graphics for the exit sign
 //******************************************************************************
 // Copyright (C) 2022 Victor V. Vu
@@ -43,7 +43,7 @@ public class Exitui : Form {
 
   private static bool arrow_visible = true; // bool to check if arrow is visible
 
-  // set up states 
+  // set up states
   private enum State { starting, paused, flashing };
   private enum Current_speed { fast, slow };
 
@@ -94,11 +94,11 @@ public class Exitui : Form {
 
     // Set colors for panel and buttons
     header_panel.BackColor = Color.Cornsilk;
-    display_panel.BackColor = Color.Gold;
-    control_panel.BackColor = Color.DeepSkyBlue;
-    start_button.BackColor = Color.LimeGreen;
-    speed_control_button.BackColor = Color.LimeGreen;
-    quit_button.BackColor = Color.LimeGreen;
+    display_panel.BackColor = Color.BurlyWood;
+    control_panel.BackColor = Color.CornflowerBlue;
+    start_button.BackColor = Color.MediumAquamarine;
+    speed_control_button.BackColor = Color.MediumAquamarine;
+    quit_button.BackColor = Color.MediumAquamarine;
 
     // Set text fonts and font size
     author.Font = new Font("Times New Roman", 26, FontStyle.Regular);
@@ -112,6 +112,7 @@ public class Exitui : Form {
     exit_message.TextAlign = ContentAlignment.MiddleCenter;
 
     // Set locations (width, length)
+    header_panel.Location = new Point(0, 0);
     author.Location = new Point(330, 80);
     exit_message.Location = new Point(350, 60);
     start_button.Location = new Point(220, 50);
