@@ -2,7 +2,6 @@
 // Author Information:
 // Name: Victor V. Vu
 // Email: vuvictor@csu.fullerton.edu
-// Section: 223N-01
 //
 // Program Information:
 // Program Name: Colored Exit Sign
