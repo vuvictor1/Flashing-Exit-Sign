@@ -144,7 +144,7 @@ public class Exitui : Form {
 
   } // End of ui constructor
 
-  // Function to draw an arrow pointing right
+  // Button controlling timers
   protected void start(Object sender, EventArgs h) {
     switch (program_status) {
     case State.starting:
@@ -165,7 +165,7 @@ public class Exitui : Form {
     } // End of switch
   } // End of start
 
-  // Function is called when the clock tics
+  // Refresh the graphics to flash
   protected void refresh(Object sender, EventArgs h) {
     arrow_visible = !arrow_visible;
     display_panel.Invalidate(); // Invalidate calls OnPaint
@@ -194,7 +194,7 @@ public class Exitui : Form {
   public class Graphicpanel : Panel {
     public Graphicpanel() { Console.WriteLine("A graphic panel was created."); }
 
-    // Function will call onpaint to display graphic
+    // Calls onpaint to display graphic
     protected override void OnPaint(PaintEventArgs ii) {
       Graphics graph = ii.Graphics;
       if (arrow_visible) { // (x, y, width, length) : draw circles to form an arrow
