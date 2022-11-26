@@ -25,7 +25,7 @@
 using System;
 using System.Windows.Forms;
 
-// Main class to call ui function
+// Main class to call ui file
 public class Exitmain {
   static void Main(string[] args) {
     System.Console.WriteLine("Welcome to the driver file of the Exit Sign program.");
