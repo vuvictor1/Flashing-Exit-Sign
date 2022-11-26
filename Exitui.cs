@@ -1,25 +1,25 @@
-//******************************************************************************
-// Author Information:
-// Name: Victor V. Vu
-// Email: vuvictor@csu.fullerton.edu
-//
-// Program Information:
-// Program Name: Colored Exit Sign
-// This File: exitui.cpp
-// Description: UI file containing graphics for the exit sign
-//******************************************************************************
-// Copyright (C) 2022 Victor V. Vu
-// This program is free software: you can redistribute it and/or modify it under
-// the terms of the GNU General Public License version 3 as published by the
-// Free Software Foundation. This program is distributed in the hope that it
-// will be useful, but WITHOUT ANY WARRANTY without even the implied Warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-// Public License for more details. A copy of the GNU General Public License v3
-// is available here: <https://www.gnu.org/licenses/>.
-//******************************************************************************
-// Programmed in Ubuntu-based Linux Platform.
-// To run program, type in terminal: "sh r.sh"
-//******************************************************************************
+/*******************************************************************************
+   Author Information:
+   Name: Victor V. Vu
+   Email: vuvictor@csu.fullerton.edu
+
+   Program Information:
+   Program Name: Colored Exit Sign
+   This File: Exitui.cs
+   Description: UI file containing graphics for the exit sign
+
+   Copyright (C) 2022 Victor V. Vu
+   This program is free software: you can redistribute it and/or modify it under
+   the terms of the GNU General Public License version 3 as published by the
+   Free Software Foundation. This program is distributed in the hope that it
+   will be useful, but WITHOUT ANY WARRANTY without even the implied Warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+   Public License for more details. A copy of the GNU General Public License v3
+   is available here: <https://www.gnu.org/licenses/>.
+
+   Programmed in Ubuntu-based Linux Platform.
+   To run program, type in terminal: "sh r.sh"
+  ******************************************************************************/
 
 // Include the required libraries
 using System;
@@ -40,33 +40,32 @@ public class Exitui : Form {
   private Size max_exit_ui_size = new Size(1024, 1280);
   private Size min_exit_ui_size = new Size(1024, 1280);
 
-  private static bool arrow_visible = true; // bool to check if arrow is visible
+  private static bool arrow_visible = true; // check if arrow is visible
 
-  // set up states
+  // Set up switch states
   private enum State { starting, paused, flashing };
   private enum Current_speed { fast, slow };
-
-  // default states
   private State program_status = State.starting;
   private Current_speed speed = Current_speed.slow;
 
-  // delcare new timer
+  // Delcare timer
   private static System.Timers.Timer exit_clock = new System.Timers.Timer();
 
   // Control speed of clocks in Hz
   private const double fast_clock = 9.0;
   private const double slow_clock = 2.0;
-  // set interval speed of one second in ms
+
+  // Set interval speed of one second in ms
   private const double one_second = 1000.0;
   private const double fast_interval = (one_second / fast_clock);
   private const double slow_interval = (one_second / slow_clock);
-  // Round up interval and assign them
+
+  // Round up interval and assign them to ints
   private int fast_interval_int = (int)System.Math.Round(fast_interval);
   private int slow_interval_int = (int)System.Math.Round(slow_interval);
 
   // Initialize Variables
-  // Text and Size are attributes included in form
-  public Exitui() {
+  public Exitui() { // Text & Size attributes included in form
     // Assign a size to the ui
     MaximumSize = max_exit_ui_size;
     MinimumSize = min_exit_ui_size;
@@ -136,13 +135,12 @@ public class Exitui : Form {
     speed_control_button.Click += new EventHandler(speed_control);
     quit_button.Click += new EventHandler(terminate);
 
-    // clock controls
+    // Clock controls
     exit_clock.Enabled = false;
     exit_clock.Elapsed += new ElapsedEventHandler(refresh);
     exit_clock.Interval = slow_interval_int;
 
-    // Center the screen when program is opened
-    CenterToScreen();
+    CenterToScreen(); // Center program screen
 
   } // End of ui constructor
 
@@ -173,7 +171,7 @@ public class Exitui : Form {
     display_panel.Invalidate(); // Invalidate calls OnPaint
   } // End of method refresh
 
-  // change the speed of the clock
+  // Change the speed of the clock
   protected void speed_control(Object sender, EventArgs h) {
     if (speed == Current_speed.slow) {
       speed = Current_speed.fast;
@@ -196,11 +194,10 @@ public class Exitui : Form {
   public class Graphicpanel : Panel {
     public Graphicpanel() { Console.WriteLine("A graphic panel was created."); }
 
-    // function will call onpaint to display graphic
-    // (x, y, width, length) : make several circles to form an arrow
+    // Function will call onpaint to display graphic
     protected override void OnPaint(PaintEventArgs ii) {
       Graphics graph = ii.Graphics;
-      if (arrow_visible) {
+      if (arrow_visible) { // (x, y, width, length) : draw circles to form an arrow
         graph.FillEllipse(Brushes.Crimson, 100, 500, 80, 80);
         graph.FillEllipse(Brushes.Crimson, 240, 500, 80, 80);
         graph.FillEllipse(Brushes.Crimson, 390, 500, 80, 80);
