@@ -1,5 +1,4 @@
 # Flashing-Exit-Sign
-
 Graphical output of a flashing exit sign. 
 
 Featured with a flashing arrow and control buttons. Program written in C#. Runs using bash script.
