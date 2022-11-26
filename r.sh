@@ -15,21 +15,21 @@
 # To run program, type in terminal: "sh r.sh"
 
 
-echo Removing old binary files
+# Remove old dll and executables
 rm *.dll
 rm *.exe
 
-echo Viewing list of source files
+# View list of source files
 ls -l
 
 # Compiling C# file to create new dlls
 mcs -target:library -r:System.Drawing.dll -r:System.Windows.Forms.dll -out:Exitui.dll Exitui.cs
 
-# Compiling the driver file and linking with created dlls to create a new executable.
+# Compiling the driver file and linking with created dlls to create an executable
 mcs -r:System -r:System.Windows.Forms -r:Exitui.dll -out:Exit.exe Exitmain.cs
 
-echo Viewing current list of source files
+# View current list of source files
 ls -l
 
-echo Program will now run.
+# Launch the program
 ./Exit.exe
