@@ -214,7 +214,5 @@ public class Exitui : Form {
       }
       base.OnPaint(ii);
     } // OnPaint constructor
-
   } // End of graphics constructor
-
 } // End of main class
