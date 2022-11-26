@@ -2,7 +2,7 @@ Program that displays a graphical output of an exit sign. Featured with a flashi
 
 ***Run Instructions***
 ```
-Run Bash File: sh r.sh
+Bash File: sh r.sh
 ```
 
 ***Requirements:***
