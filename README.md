@@ -1,4 +1,4 @@
-Program that displays a graphical output of an exit sign. Featured with a flashing arrow and control buttons. Program written in C#. Runs using a bash script file.
+Program that displays a graphical output of an exit sign. Featured with a flashing arrow and control buttons. Program written in C#. Runs using bash script.
 
 ***Run Instructions***
 ```
