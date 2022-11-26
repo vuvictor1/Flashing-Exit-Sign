@@ -18,7 +18,7 @@
    is available here: <https://www.gnu.org/licenses/>.
 
    Programmed in Ubuntu-based Linux Platform.
-   To run program, type in terminal: "sh r.sh"
+   To run bash script, type in terminal: "sh r.sh"
   ******************************************************************************/
 
 // Inlcudes the required system files
