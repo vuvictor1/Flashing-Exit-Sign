@@ -14,7 +14,6 @@
 # Programmed in Ubuntu-based Linux Platform.
 # To run bash script, type in terminal: "sh r.sh"
 
-
 # Remove old dll and executables
 rm *.dll
 rm *.exe
