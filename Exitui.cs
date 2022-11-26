@@ -51,8 +51,8 @@ public class Exitui : Form {
   // Delcare timer
   private static System.Timers.Timer exit_clock = new System.Timers.Timer();
 
-  // Control speed of clocks in Hz
-  private const double fast_clock = 9.0;
+  // Speed of clocks in Hz
+  private const double fast_clock = 4.0;
   private const double slow_clock = 2.0;
 
   // Set interval speed of one second in ms
@@ -165,7 +165,7 @@ public class Exitui : Form {
     } // End of switch
   } // End of start
 
-  // This function is called when the clock tics
+  // Function is called when the clock tics
   protected void refresh(Object sender, EventArgs h) {
     arrow_visible = !arrow_visible;
     display_panel.Invalidate(); // Invalidate calls OnPaint
