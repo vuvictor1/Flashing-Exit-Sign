@@ -6,7 +6,7 @@
    Program Information:
    Program Name: Colored Exit Sign
    This File: Exitui.cs
-   Description: UI file containing graphics for the exit sign
+   Description: Called by the driver file to ouput ui
 
    Copyright (C) 2022 Victor V. Vu
    This program is free software: you can redistribute it and/or modify it under
@@ -18,8 +18,8 @@
    is available here: <https://www.gnu.org/licenses/>.
 
    Programmed in Ubuntu-based Linux Platform.
-   To run program, type in terminal: "sh r.sh"
-  ******************************************************************************/
+   To run bash script, type in terminal: "sh r.sh"
+*******************************************************************************/
 
 // Include the required libraries
 using System;
