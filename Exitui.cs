@@ -2,10 +2,12 @@
    Author Information:
    Name: Victor V. Vu
    Email: vuvictor@csu.fullerton.edu
+   
    Program Information:
    Program Name: Colored Exit Sign
    This File: Exitui.cs
    Description: Called by the driver file to ouput ui
+   
    Copyright (C) 2022 Victor V. Vu
    This program is free software: you can redistribute it and/or modify it under
    the terms of the GNU General Public License version 3 as published by the
@@ -14,6 +16,7 @@
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
    Public License for more details. A copy of the GNU General Public License v3
    is available here: <https://www.gnu.org/licenses/>.
+   
    Programmed in Ubuntu-based Linux Platform.
    To run bash script, type in terminal: "sh r.sh"
 *******************************************************************************/
