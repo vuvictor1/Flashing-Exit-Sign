@@ -21,7 +21,7 @@
    To run bash script, type in terminal: "sh r.sh"
 *******************************************************************************/
 
-// Include the required libraries
+// Required system files
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -79,8 +79,7 @@ public class Exitui : Form {
     speed_control_button.Text = "Fast";
     quit_button.Text = "Quit";
 
-    // Set size values of buttons, textboxes,
-    // & panels (width, length)
+    // Set size values (width, length)
     author.Size = new Size(370, 40);
     exit_message.Size = new Size(300, 200);
     start_button.Size = new Size(120, 60);
@@ -140,8 +139,7 @@ public class Exitui : Form {
     exit_clock.Elapsed += new ElapsedEventHandler(refresh);
     exit_clock.Interval = slow_interval_int;
 
-    CenterToScreen(); // Center program screen
-
+    CenterToScreen(); // center program screen
   } // End of ui constructor
 
   // Button controlling timers
